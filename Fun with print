@@ -1,0 +1,44 @@
+import colorama
+from colorama import Fore, Back, Style
+import time 
+import pyfiglet
+print(Fore.BLUE+"hello world")
+time.sleep(1)
+n=input(Fore.RED+"What is your name-")
+time.sleep(1)
+location=input(Fore.GREEN+"Where do you live")
+time.sleep(1)
+print(Fore.BLACK+"hello",n,"how are you")
+time.sleep(1)
+style=input("Choose your style:(type 1,2 or 3)")
+if style==1:
+    result=pyfiglet.figlet_format(n,font="slant")
+    result2=pyfiglet.figlet_format(location,font="slant")
+    time.sleep(1)
+elif style==2:
+    result=pyfiglet.figlet_format(n,font="3-d")
+    result2=pyfiglet.figlet_format(location,font="3-d")
+    time.sleep(1)
+else:
+    result=pyfiglet.figlet_format(n,font="digital")
+    result2=pyfiglet.figlet_format(location,font="digital")
+    time.sleep(1)
+print(result)
+time.sleep(4)
+print(result2)
+time.sleep(4)
+print(Fore.RED+"Do you want",end=" ")
+print(Fore.BLACK+"a surprise")
+time.sleep(1)
+hi=input("yes or no-")
+if hi=="yes":
+    time.sleep(1)
+    print("IIIIIIIIIII    TTTTTTTTTTTT      A           CCCCCCCCCCCCC    H              H       IIIIIIIIIIIIII")
+    print("     I               T          A A         C                 H              H              I")
+    print("     I               T         A   A       C                  H              H              I")
+    print("     I               T        A     A     C                   H              H              I ")
+    print("     I               T       A       A    C                   HHHHHHHHHHHHHHHH              I")
+    print("     I               T      AAAAAAAAA A   C                   H              H              I")   
+    print("     I               T     A           A   C                  H              H              I")    
+    print("     I               T    A             A   C                 H              H              I")
+    print("IIIIIIIIIII          T   A               A   CCCCCCCCCCCCCC   H              H       IIIIIIIIIIIIIII")
