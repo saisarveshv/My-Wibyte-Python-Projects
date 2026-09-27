@@ -39,15 +39,18 @@ if answer.lower()=='verbs':
     sentence = input("ok, tell me a sentence ending in 'wise assistant' (no question please)\n")
     if sentence.endswith('wise assistant'):
         print("Haven't you learnt about punctuations?")
+        if 'idiot' in sentence or 'moron' in sentence or 'animal' in sentence or 'fool' in sentence or 'stupid' in sentence or 'dumb' in sentence or 'jerk' in sentence or 'loser' in sentence or 'moron' in sentence or 'nincompoop' in sentence or 'simpleton' in sentence or 'twit' in sentence or 'blockhead' in sentence or 'bonehead' in sentence or 'dimwit' in sentence or 'dunce' in sentence or 'ignoramus' in sentence or 'nitwit' in sentence or 'numbskull' in sentence or 'oaf' in sentence or 'pinhead' in sentence or 'saphead' in sentence or 'slowpoke' in sentence or 'thickhead' in sentence:
+            print("You have used a derogatory word in your sentence. I am disappointed.")
         
     elif sentence.endswith('wise assistant.'):
         len_first = sentence.find(' ')
-        po=sentence.find('idiot', moron', ' animal',' fool',' stupid', ' dumb' , ' jerk' , ' loser' , ' moron' , ' nincompoop' , ' simpleton' , ' twit' , ' blockhead' , ' bonehead' ,' dimwit' , ' dunce' , ' ignoramus' , ' nitwit' , ' numbskull' , ' oaf' , ' pinhead' , ' saphead' ,' slowpoke' ,' thickhead')
+        
         if len_first < 5:
             print("The first word in the sentence is too short.")
             score=score-1
-        if po>1:
-            print("You have used a derogatory word in your sentence. I am disappointed.")
+        if 'idiot' in sentence or 'moron' in sentence or 'animal' in sentence or 'fool' in sentence or 'stupid' in sentence or 'dumb' in sentence or 'jerk' in sentence or 'loser' in sentence or 'moron' in sentence or 'nincompoop' in sentence or 'simpleton' in sentence or 'twit' in sentence or 'blockhead' in sentence or 'bonehead' in sentence or 'dimwit' in sentence or 'dunce' in sentence or 'ignoramus' in sentence or 'nitwit' in sentence or 'numbskull' in sentence or 'oaf' in sentence or 'pinhead' in sentence or 'saphead' in sentence or 'slowpoke' in sentence or 'thickhead' in sentence:
+            print("You have used a derogatory word in your sentence. I am disappointed."):
+            
             score=score+1
     else:
         print("I really think you will make the professor furious.")
