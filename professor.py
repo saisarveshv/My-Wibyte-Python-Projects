@@ -42,11 +42,11 @@ if answer.lower()=='verbs':
         
     elif sentence.endswith('wise assistant.'):
         len_first = sentence.find(' ')
-        po=sentence.find('idiot'or' moron' or ' animal' or ' fool' or ' stupid'or ' dumb' or ' jerk' or ' loser' or ' moron' or ' nincompoop' or ' simpleton' or ' twit' or ' blockhead' or ' bonehead' or ' dimwit' or ' dunce' or ' ignoramus' or ' nitwit' or ' numbskull' or ' oaf' or ' pinhead' or ' saphead' or ' slowpoke' or ' thickhead')
+        po=sentence.find('idiot', moron', ' animal',' fool',' stupid', ' dumb' , ' jerk' , ' loser' , ' moron' , ' nincompoop' , ' simpleton' , ' twit' , ' blockhead' , ' bonehead' ,' dimwit' , ' dunce' , ' ignoramus' , ' nitwit' , ' numbskull' , ' oaf' , ' pinhead' , ' saphead' ,' slowpoke' ,' thickhead')
         if len_first < 5:
             print("The first word in the sentence is too short.")
             score=score-1
-        if po==True:
+        if po>1:
             print("You have used a derogatory word in your sentence. I am disappointed.")
             score=score+1
     else:
