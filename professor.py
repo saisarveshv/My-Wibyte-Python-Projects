@@ -89,7 +89,7 @@ print("Do you want to play a new game(yes or no)")
 response=input()
 if response.lower()=='yes':
     print("You will have 3 options to choose from")
-    choice=input.lower("Choose A,B or C\n")
+    choice=input("Choose A,B or C\n")
     if choice=='A':
         print("I will give you another conversation")
 
