@@ -1,180 +1,172 @@
-import turtle
+print('Welcome to the WiByte Bakery')
+print()
 
-t = turtle.Turtle()
-ts = t.getscreen()
+menu = ['Milkshake', 'Ice Cream', 'Chocolate', 'Eclairs  ', 'CupCake  ']
+price = [99.99, 120.99, 89.99, 37.99, 51.99]
 
+print('ITEM', 'PRICE (INR), excl. Tax', sep='\t\t\t')
+for kk in range(len(menu)):
+    print(str(kk+1)+'. '+menu[kk], price[kk], sep='\t\t')
 
-def draw_line(x0, y0, x1, y1):
-    t.penup()
-    t.goto(x0, y0)
-    t.pendown()
-    t.goto(x1, y1)
+shopping_cart = [] 
+shopping_quant= []
+shopping_complete = 0
 
-def draw_rectangle(x0, y0, len, hgt, clr):
-    t.fillcolor(clr)
-    t.begin_fill()
-    draw_line(x0, y0, x0+len, y0)
-    draw_line(x0+len, y0, x0+len, y0+hgt)
-    draw_line(x0+len, y0+hgt, x0, y0+hgt)
-    draw_line(x0, y0+hgt, x0, y0)
-    t.end_fill()
+while shopping_complete==0:
 
-# Make the drawing instant
-ts.tracer(0)
+    order = int(input('Enter 1 to 5 to select an item, 6 to proceed to checkout.\n')) 
+    
+   
+    
+    if order <= 5:
+        # User wants to purchase something.
+        print('You selected', menu[order-1])
+        quant = int(input('How many units do you wish to purchase?\n'))
 
-# Draw 1 row of rectangles. 
-n_cols = 20 
-x_val  = -150
-y_val  = 0
-
-for jj in range(n_cols):
-    if jj < 5:
-       draw_rectangle(x_val, y_val, 20, 20, "red")
-    elif jj > 4 and jj < 15:
-       draw_rectangle(x_val, y_val, 20, 20, "blue")
-    else:
-       draw_rectangle(x_val, y_val, 20, 20, "green")
-    x_val = x_val + 20
-
-t.hideturtle()    
-
-
-# input()
-# Now show the drawing
-ts.update()
-input()
-t.clear()
-
-# Create a grid of squares
-n_rows = 20
-y_val = 150
-x_val = -150
-ts.tracer(0)
-for kk in range(n_rows): 
-    for jj in range(n_cols):
-        if kk==jj:
-           draw_rectangle(x_val, y_val, 15, 15, "red")
+        # Add the item to the shopping cart. 
+        # List 1: Shopping Cart items
+        # List 2: Quantity
+        if menu[order-1] in shopping_cart:
+            idx = shopping_cart.index(menu[order-1])
+            
+            shopping_quant[idx]+=quant
         else:
-           draw_rectangle(x_val, y_val, 15, 15, "green")
-        x_val = x_val + 15
-    x_val = -150
-    y_val = y_val - 15
-
-ts.update()
-
-input()
-
-t.clear()
-t.hideturtle()
+            shopping_cart.append(menu[order-1])        
+            shopping_quant.append(quant)        
+        
+        print('Added to shopping cart:', quant, 'units of', menu[order-1])
+    elif order == 6:
+        shopping_complete = 1
+    else: 
+        print("Sorry that was not a valid input.")
+        
 
 
-
-ts.tracer(0)
-n_rows = 20; 
-n_cols = 20; 
-x_val = -150; 
-y_val = 150
-
-# Create MARIO
-# color_list is a list that contains WHICH color we want on the specific pixel of a given row. 
-# 1 = white, 2 = red, 3 = brown, 4= gold, 5 = black, 6 = blue. 
-
-# kk is the row index
-# Define the color list per row
-for kk in range(n_rows):
-    if kk==0 or kk==1:
-        color_list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    elif kk==2:
-        color_list = [1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1]
-    elif kk==3:
-        color_list = [1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1]
-    elif kk==4:
-        color_list = [1, 1, 1, 1, 1, 1, 3, 3, 3, 4, 4, 5, 4, 1, 1, 1, 1, 1, 1, 1]
-    elif kk==5:
-        color_list = [1, 1, 1, 1, 1, 3, 4, 3, 4, 4, 4, 5, 4, 4, 4, 1, 1, 1, 1, 1]
-    elif kk==6:
-        color_list = [1, 1, 1, 1, 1, 3, 4, 3, 3, 4, 4, 4, 5, 4, 4, 4, 1, 1, 1, 1]
-    elif kk==7:
-        color_list = [1, 1, 1, 1, 1, 1, 3, 4, 4, 4, 4, 5, 5, 5, 5, 1, 1, 1, 1, 1]
-    elif kk==8:
-        color_list = [1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 1]
-    elif kk==9:
-        color_list = [1, 1, 1, 1, 1, 1, 2, 2, 6, 2, 2, 6, 2, 2, 1, 1, 1, 1, 1, 1]
-    elif kk==10:
-        color_list = [1, 1, 1, 1, 1, 2, 2, 2, 6, 2, 2, 6, 2, 2, 2, 1, 1, 1, 1, 1]
-    elif kk==11:
-        color_list = [1, 1, 1, 1, 2, 2, 2, 2, 6, 6, 6, 6, 2, 2, 2, 2, 1, 1, 1, 1]
-    elif kk==12:
-        color_list = [1, 1, 1, 1, 4, 4, 2, 6, 4, 6, 6, 4, 6, 2, 4, 4, 1, 1, 1, 1]
-    elif kk==13:
-        color_list = [1, 1, 1, 1, 4, 4, 4, 6, 6, 6, 6, 6, 6, 4, 4, 4, 1, 1, 1, 1]
-    elif kk==14:
-        color_list = [1, 1, 1, 1, 4, 4, 6, 6, 6, 6, 6, 6, 6, 6, 4, 4, 1, 1, 1, 1]
-    elif kk==15:
-        color_list = [1, 1, 1, 1, 1, 1, 6, 6, 6, 1, 1, 6, 6, 6, 1, 1, 1, 1, 1, 1]
-    elif kk==16:
-        color_list = [1, 1, 1, 1, 1, 3, 3, 3, 1, 1, 1, 1, 3, 3, 3, 1, 1, 1, 1, 1]
-    elif kk==17:
-        color_list = [1, 1, 1, 1, 3, 3, 3, 3, 1, 1, 1, 1, 3, 3, 3, 3, 1, 1, 1, 1]
-    else:
-        color_list = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 
         
-    for jj in range(n_cols):
+# Show the shopping cart. 
 
-        if color_list[jj]==1:
-            draw_rectangle(x_val, y_val, 15, 15, "white")
-        elif color_list[jj]==2:
-            draw_rectangle(x_val, y_val, 15, 15, "red")
-        elif color_list[jj]==3:
-            draw_rectangle(x_val, y_val, 15, 15, "brown")
-        elif color_list[jj]==4:
-            draw_rectangle(x_val, y_val, 15, 15, "gold")
-        elif color_list[jj]==5:
-            draw_rectangle(x_val, y_val, 15, 15, "black")
+print()
+print('Your Shopping Cart:')
+
+# Separate the number. 
+# Give title to the shopping cart. 
+# Add the price of every item in the shopping cart, and also the total. 
+grand_tot = 0.0
+print('ITEM', 'QUANT', 'UNIT PRICE', 'TOTAL', sep='\t\t\t')    
+for kk in range(len(shopping_cart)):
+    idx = menu.index(shopping_cart[kk])
+    unit_price=price[idx]
+    tot_price = round(unit_price*shopping_quant[kk], 2)
+    grand_tot += tot_price
+    print(shopping_cart[kk], shopping_quant[kk], unit_price, tot_price, sep='\t\t\t')
+
+grand_tot = round(grand_tot, 2)
+print()
+print('Your total order is (INR)', grand_tot)
+print(idx)
+
+
+buying_item=[]
+    itemcost=[]
+    shopping_complete=0
+
+    while shopping_complete==0:
+        order=int(input('Enter 1 to 5 to select a player.'))
+
+
+        if order<=5:
+            print('You have selected player',batterlist[order-1])
+            buying_item.append(batterlist[order-1])
+            itemcost.append(price[order-1])
+            shopping_complete=shopping_complete+1
         else:
-            draw_rectangle(x_val, y_val, 15, 15, "blue")    
-        x_val = x_val + 15
-    x_val = -150
-    y_val = y_val - 15
+            print('invalid input')
 
-t.hideturtle()
+    print("Next you have the choose your all-rounder")       
+    all_round=['Hardik Pandya     ','Ravindra Jadeja'  ,'Axar Patel      ','Sunil Narine    ','Shivam Dube     ']
+    prices=[20,18,13,16,8]
+    print('PLAYER(ALL-ROUNDER)','PRICE(IN CRORE)',sep='\t\t\t')
+    for ll in range(len(all_round)):
+        print(str(ll+1)+'. '+all_round[ll],prices[ll],sep='\t\t\t')
 
-#elif kk+jj>9 and kk+jj<29:
-        #   draw_rectangle(x_val, y_val, 15, 15, "blue")
-
-
-
-ts.update()    
-ts.mainloop()
-
-# t.done()
     
-#x_val = -100
-#y_val = y_val - 10
+    shoping=0
+
+    while shoping==0:
+        orde=int(input("enter 1 to 5 to select a player"))
+        if orde<=5:
+            print('You have chosen',all_round[orde-1])
+            buying_item.append(all_round[orde-1])
+            itemcost.append(prices[orde-1])
+            shoping=shoping+1
+        else:
+            print('Invalid player')
 
 
-#for jj in range(10):
-#    for kk in range(10):
-#        if kk < 5:
-#            draw_rectangle(kk*15, -100, 15, 15, "orange")
-#        else:
-#            draw_rectangle(kk*15, -100, 15, 15, "green")
-         
-#ts.update()        
-#ts.tracer(0)
-
-#t.speed(1)
-
-#for kk in range(100):
-#   t.forward(50)
-#   t.back(50)
-#   t.left(31)
-
-#ts.update()
+    print('Next you have to buy a bowler')
+    bowler=['Bumrah        ','Siraj        ', 'Kuldeep Yadav ','Starc          ','Harshit Rana  ']
+    pricess=[20,18,13,16,8]
+    print('PLAYER(BOWLER)','PRICE(IN CRORE)',sep='\t\t\t')
+    for bb in range(len(bowler)):
+        print(str(bb+1)+'. '+bowler[bb],pricess[bb],sep='\t\t')
     
-#t.goto(0, 0)
-#t.goto(100, 100)
-#t.goto(200, 0)
+    
+    shopingg=0
+    
+    while shopingg==0:
+        orders=int(input("enter 1 to 5 to select a player"))
+        if orders<=5:
+            print('You have chosen',all_round[orde-1])
+            buying_item.append(bowler[orders-1])
+            itemcost.append(pricess[orders-1])
+            shopingg=shopingg+1
+        else:
+            print('Invalid player')
 
-#ts.update()
+
+    print("now you have to choose your two substitutes")
+    print("You will have a choice of ten players to choose from")
+    subs=['Sanju Samson   ','Devdutt Padikkal','Tilak Varma   ','Sai Sudharshan','Romario Shepherd','Corbin Bosch   ','Khaleel Ahmed','Bhuvneshwar Kumar','Varun Chakravarty','Mohammad Shami']
+    pricesy=[15,11,17,9,2,1,4,10,5,8]
+    print('PLAYER NAME(SUB)','PRICE(IN CRORES)',sep='\t\t\t')
+    for ss in range(len(subs)):
+        print(str(ss+1)+'. '+subs[ss],pricesy[ss],sep='\t\t\t')
+
+    shopsy=0
+
+    while shopsy==0:
+
+        ordersss=int(input("choose two players and enter number between 1 to 10,11 to finish"))
+        if ordersss<=10:
+            print("You have chosen",subs[ordersss-1])
+            buying_item.append(subs[ordersss-1])
+            itemcost.append(pricesy[ordersss-1])
+        elif ordersss==11:
+            print('You have finished your purchases')
+            shopsy=shopsy+1
+    if len(buying_item)>5 or len(buying_item)<5:
+        print('You are eliminated')
+    else:
+
+ print('You have finished creating your team')
+        print("Your players are as follows:")
+        print('PLAYER','COST(IN CRORES)',sep='\t\t\t')
+        idx = batterlist.index(buying_item[kk])
+        idxs=all_round.index(buying_item[ll])
+        idxz=bowler.index(buying_item(bb))
+        idfe=subs.index(buying_item[ss])
+        p=price[idx]
+        q=prices[idxs]
+        r=pricess[idxz]
+        s=pricesy[idfe]
+        grandtot=p+q+r+s
+        for pp in range(5):
+            print(buying_item[pp],itemcost[pp],sep='\t\t\t')
+
+
+        print("Your total cost for buying all players is",grandtot)
+        if grandtot>100:
+            print('You have expended over the budget. Therefore you are eliminated')
+        else:
+            print('As you have expended under the budget, you can continue')
